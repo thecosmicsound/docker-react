@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t thecosmicsound/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true thecosmicsound/docker-react npm run test
